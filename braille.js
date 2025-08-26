@@ -10,10 +10,19 @@ function createImageCanvas(src) {
 				width = settings.width * 2;
 				height = width * image.height / image.width;
 			}
+			
+			var sx, sy;
+	        if(settings.spacing) {
+	          sx = 3;
+	          sy = 5;
+	        } else {
+	          sx = 2;
+	          sy = 4;
+	        }
 
 			//nearest multiple
-			canvas.width = width - (width % 3);
-			canvas.height = height - (height % 5);
+			canvas.width = width - (width % sx);
+			canvas.height = height - (height % sy);
 
 			ctx = canvas.getContext("2d");
 			ctx.fillStyle = "#FFFFFF"; //get rid of alpha
@@ -83,9 +92,18 @@ function canvasToText(canvas) {
 	}
 
 	let output = "";
+	
+	var sx, sy;
+	if(settings.spacing) {
+	    sx = 3;
+	    sy = 5;
+	} else {
+	    sx = 2;
+	    sy = 4;
+	}
 
-	for(let imgy = 0; imgy < height; imgy += 5) {
-		for(let imgx = 0; imgx < width; imgx += 3) {
+	for(let imgy = 0; imgy < height; imgy += sy) {
+		for(let imgx = 0; imgx < width; imgx += sx) {
 			const braille_info = [0,0,0,0,0,0,0,0];
 			let dot_index = 0;
 			for(let x = 0; x < 2; x++) {
