@@ -12,8 +12,8 @@ function createImageCanvas(src) {
 			}
 
 			//nearest multiple
-			canvas.width = width - (width % 2);
-			canvas.height = height - (height % 4);
+			canvas.width = width - (width % 3);//2
+			canvas.height = height - (height % 5);//4
 
 			ctx = canvas.getContext("2d");
 			ctx.fillStyle = "#FFFFFF"; //get rid of alpha
@@ -24,7 +24,11 @@ function createImageCanvas(src) {
 			ctx.msImageSmoothingEnabled = false;
 			ctx.imageSmoothingEnabled = false;
 
-			ctx.drawImage(image, 0,0, canvas.width,canvas.height);
+            for (var i=0; i<canvas.width; i+=3) {
+              for (var j=0; j<canvas.height; j+=5) {
+			    ctx.drawImage(image, i,j, 2,4, i/3*2,j/5*4, 2,4);
+              }
+            }
 			resolve(canvas);
 		}
 
