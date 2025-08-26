@@ -8,6 +8,7 @@ const settings = {
 	inverted: false,
 	dithering: false,
 	monospace: true,
+	spacing: true
 }
 
 function setUIElement(selector, value) {
