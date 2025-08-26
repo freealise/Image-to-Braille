@@ -4,21 +4,21 @@ function createImageCanvas(src) {
 		const image = new Image();
 
 		image.onload = () => {
-			let width = image.width;
-			let height = image.height;
-			if(image.width != (settings.width * 2)) {
-				width = settings.width * 2;
-				height = width * image.height / image.width;
-			}
-			
-			var sx, sy;
+		    var sx, sy;
 	        if(settings.spacing) {
 	          sx = 3;
-	          sy = 5;
+	          sy = 6;
 	        } else {
 	          sx = 2;
 	          sy = 4;
 	        }
+		    
+			let width = image.width;
+			let height = image.height;
+			if(image.width != (settings.width * sx)) {
+				width = settings.width * sx;
+				height = width * image.height / image.width;
+			}
 
 			//nearest multiple
 			canvas.width = width - (width % sx);
@@ -96,7 +96,7 @@ function canvasToText(canvas) {
 	var sx, sy;
 	if(settings.spacing) {
 	    sx = 3;
-	    sy = 5;
+	    sy = 6;
 	} else {
 	    sx = 2;
 	    sy = 4;
