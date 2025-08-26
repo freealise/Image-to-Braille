@@ -26,7 +26,7 @@ function createImageCanvas(src) {
 
             for (var i=0; i<canvas.width; i+=3) {
               for (var j=0; j<canvas.height; j+=5) {
-			    ctx.drawImage(image, i,j, 2,4, i/3*2,j/5*4, 2,4);
+			    ctx.drawImage(image, i,j, 2,4, parseInt(i/3*2),parseInt(j/5*4), 2,4);
               }
             }
 			resolve(canvas);
