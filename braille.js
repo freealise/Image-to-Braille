@@ -58,9 +58,17 @@ function pixelsToCharacter(pixels_lo_hi) { //expects an array of 8 bools
 
 function toGreyscale(r, g, b) {
 	switch(settings.greyscale_mode) {
-		case "luminance":
-			return (0.22 * r) + (0.72 * g) + (0.06 * b);
-
+		case "median":
+		    var mx = Math.max(r,g,b);
+		    var mn = Math.min(r,g,b);
+		    if (r!=mx && r!=mn) {
+			  return r;
+		    } else if (g!=mx && g!=mn) {
+			  return g;
+		    } else if (b!=mx && b!=mn) {
+			  return b;
+		    }
+		    
 		case "lightness":
 			return (Math.max(r,g,b) + Math.min(r,g,b)) / 2;
 
