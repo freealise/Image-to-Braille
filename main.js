@@ -4,7 +4,7 @@ const settings = {
 	last_source: "",
 
 	width: 64,
-	greyscale_mode: "luminance",
+	greyscale_mode: "average",
 	inverted: false,
 	dithering: false,
 	monospace: true,
