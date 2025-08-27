@@ -4,13 +4,17 @@ function createImageCanvas(src) {
 		const image = new Image();
 
 		image.onload = () => {
-		    var sx, sy;
+		    var sx, sy, offsetx, offsety;
 	        if(settings.spacing) {
 	          sx = 3;
 	          sy = 6;
+	          offsetx = -1;
+	          offsety = -1;
 	        } else {
 	          sx = 2;
 	          sy = 4;
+	          offsetx = 0;
+	          offsety = 0;
 	        }
 		    
 			let width = image.width;
@@ -33,7 +37,7 @@ function createImageCanvas(src) {
 			ctx.msImageSmoothingEnabled = false;
 			ctx.imageSmoothingEnabled = false;
 
-            ctx.drawImage(image, 0,0, canvas.width,canvas.height);
+            ctx.drawImage(image, offsetx,offsety, canvas.width,canvas.height);
             
 			resolve(canvas);
 		}
